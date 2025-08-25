@@ -1,9 +1,14 @@
 package entidades;
 
-public class Serie extends ItemMidia {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Serie extends ItemMidia implements classificavel {
     private int totalTemporada;
     private int totalEpisodios;
-    private double mediaEpisodios;
+    private double mediaEpisodiosPorTemporada;
+
+    private List<Double> notasPorTemporada = new ArrayList<Double>();
 
     public int getTotalTemporada() {
         return totalTemporada;
@@ -21,11 +26,22 @@ public class Serie extends ItemMidia {
         this.totalEpisodios = totalEpisodios;
     }
 
-    public double getMediaEpisodios() {
-        return mediaEpisodios;
+    public double getMediaEpisodiosPorTemporada() {
+        return mediaEpisodiosPorTemporada;
     }
 
-    public void setMediaEpisodios(double mediaEpisodios) {
-        this.mediaEpisodios = mediaEpisodios;
+    public void setMediaEpisodiosPorTemporada(double mediaEpisodiosPorTemporada) {
+        this.mediaEpisodiosPorTemporada = mediaEpisodiosPorTemporada;
+    }
+
+
+
+    @Override
+    public Double getClassificacao(){
+        Double somaNotas = 0.0;
+        for(Double nota : notasPorTemporada){
+            somaNotas += nota;
+        }
+        return somaNotas/totalTemporada;
     }
 }

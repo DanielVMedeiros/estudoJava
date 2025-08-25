@@ -1,9 +1,9 @@
 package entidades;
 
-public class Filme extends ItemMidia{
+public class Filme extends ItemMidia implements classificavel{
     private int duracao;
     private String diretor;
-
+    private Double nota;
     public int getDuracao() {
         return duracao;
     }
@@ -18,5 +18,13 @@ public class Filme extends ItemMidia{
 
     public void setDiretor(String diretor) {
         this.diretor = diretor;
+    }
+
+    public void setNota(Double nota) {
+        this.nota = nota;
+    }
+
+    public Double getClassificacao(){
+        return nota;
     }
 }

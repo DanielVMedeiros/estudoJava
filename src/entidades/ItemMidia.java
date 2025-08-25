@@ -3,17 +3,17 @@ package entidades;
 import java.util.Date;
 
 public class ItemMidia {
-    private String identificador;
+    private int identificador;
     private String titulo;
     private String descricao;
     private Date anoLancamento;
 
 
-    public String getIdentificador() {
+    public int getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(String identificador) {
+    public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
 
