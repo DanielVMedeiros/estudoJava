@@ -24,6 +24,7 @@ public class Filme extends ItemMidia implements classificavel{
         this.nota = nota;
     }
 
+    @Override
     public Double getClassificacao(){
         return nota;
     }
