@@ -5,9 +5,9 @@ import java.util.Date;
 public class ItemMidia {
     private int identificador;
     private String titulo;
-    private String descricao;
+    private String genero;
     private Date anoLancamento;
-
+    private Double nota;
 
     public int getIdentificador() {
         return identificador;
@@ -25,12 +25,12 @@ public class ItemMidia {
         this.titulo = titulo;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public Date getAnoLancamento() {
@@ -39,5 +39,13 @@ public class ItemMidia {
 
     public void setAnoLancamento(Date anoLancamento) {
         this.anoLancamento = anoLancamento;
+    }
+
+    public Double getNota() {
+        return nota;
+    }
+
+    public void setNota(Double nota) {
+        this.nota = nota;
     }
 }

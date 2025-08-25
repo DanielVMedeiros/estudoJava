@@ -1,15 +1,26 @@
 package entidades;
 
-public class Filme extends ItemMidia implements classificavel{
+public class Filme extends ItemMidia{
+    private int idFilme;
     private int duracao;
     private String diretor;
-    private Double nota;
-    public int getDuracao() {
-        return duracao;
+    private int idItemMidia;
+
+    public int getIdFilme() {
+        return idFilme;
     }
 
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
+    public void setIdFilme(int idFilme) {
+        this.idFilme = idFilme;
+    }
+
+    //sei que todo filme é um ItemMidia, só criei para representar a coluna da tabela, depois organizo
+    public int getIdItemMidia() {
+        return idItemMidia;
+    }
+
+    public void setIdItemMidia(int idItemMidia) {
+        this.idItemMidia = idItemMidia;
     }
 
     public String getDiretor() {
@@ -20,12 +31,11 @@ public class Filme extends ItemMidia implements classificavel{
         this.diretor = diretor;
     }
 
-    public void setNota(Double nota) {
-        this.nota = nota;
+    public int getDuracao() {
+        return duracao;
     }
 
-    @Override
-    public Double getClassificacao(){
-        return nota;
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
     }
 }

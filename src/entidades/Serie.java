@@ -3,19 +3,29 @@ package entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Serie extends ItemMidia implements classificavel {
+public class Serie extends ItemMidia{
+    private int idSerie;
+    private String autor;
     private int totalTemporada;
     private int totalEpisodios;
-    private double mediaEpisodiosPorTemporada;
+    private int idItemMidia;
 
-    private List<Double> notasPorTemporada = new ArrayList<Double>();
-
-    public int getTotalTemporada() {
-        return totalTemporada;
+    public int getIdSerie() {
+        return idSerie;
     }
 
-    public void setTotalTemporada(int totalTemporada) {
-        this.totalTemporada = totalTemporada;
+    public void setIdSerie(int idSerie) {
+        this.idSerie = idSerie;
+    }
+
+
+    //sei que toda série é um ItemMidia, só criei para representar a coluna da tabela, depois organizo
+    public int getIdItemMidia() {
+        return idItemMidia;
+    }
+
+    public void setIdItemMidia(int idItemMidia) {
+        this.idItemMidia = idItemMidia;
     }
 
     public int getTotalEpisodios() {
@@ -26,22 +36,19 @@ public class Serie extends ItemMidia implements classificavel {
         this.totalEpisodios = totalEpisodios;
     }
 
-    public double getMediaEpisodiosPorTemporada() {
-        return mediaEpisodiosPorTemporada;
+    public String getAutor() {
+        return autor;
     }
 
-    public void setMediaEpisodiosPorTemporada(double mediaEpisodiosPorTemporada) {
-        this.mediaEpisodiosPorTemporada = mediaEpisodiosPorTemporada;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
+    public int getTotalTemporada() {
+        return totalTemporada;
+    }
 
-
-    @Override
-    public Double getClassificacao(){
-        Double somaNotas = 0.0;
-        for(Double nota : notasPorTemporada){
-            somaNotas += nota;
-        }
-        return somaNotas/totalTemporada;
+    public void setTotalTemporada(int totalTemporada) {
+        this.totalTemporada = totalTemporada;
     }
 }
