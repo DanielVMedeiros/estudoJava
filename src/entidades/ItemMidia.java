@@ -1,13 +1,28 @@
 package entidades;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class ItemMidia {
     private int identificador;
+
+    @SerializedName("Title")
     private String titulo;
+
+    @SerializedName("Genre")
     private String genero;
-    private Date anoLancamento;
+
+    @SerializedName("Year")
+    private int anoLancamento;
+
     private Double nota;
+
+    public ItemMidia(ItemMidiaOmdb item) {
+        this.titulo = item.title();
+        this.genero = item.genre();
+        this.anoLancamento = Integer.parseInt(item.year());
+    }
 
     public int getIdentificador() {
         return identificador;
@@ -33,19 +48,20 @@ public class ItemMidia {
         this.genero = genero;
     }
 
-    public Date getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(Date anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
-
-    public Double getNota() {
+   public Double getNota() {
         return nota;
     }
 
     public void setNota(Double nota) {
         this.nota = nota;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemMidia{" +
+                "titulo='" + titulo + '\'' +
+                ", genero='" + genero + '\'' +
+                ", anoLancamento=" + anoLancamento +
+                '}';
     }
 }

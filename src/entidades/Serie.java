@@ -10,6 +10,10 @@ public class Serie extends ItemMidia{
     private int totalEpisodios;
     private int idItemMidia;
 
+    public Serie(ItemMidiaOmdb item) {
+        super(item);
+    }
+
     public int getIdSerie() {
         return idSerie;
     }

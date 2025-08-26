@@ -6,6 +6,10 @@ public class Filme extends ItemMidia{
     private String diretor;
     private int idItemMidia;
 
+    public Filme(ItemMidiaOmdb item) {
+        super(item);
+    }
+
     public int getIdFilme() {
         return idFilme;
     }
