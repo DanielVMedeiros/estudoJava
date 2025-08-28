@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder;
 import entidades.ItemMidia;
 import entidades.ItemMidiaOmdb;
 import entidades.Usuario;
+import exceptions.ErroDeConversaoDeAnoException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,6 +22,7 @@ class Main {
         String filme = sc.nextLine();
 
         String url = "http://www.omdbapi.com/?t=" + filme.replace(" ", "+") + "&apikey=";
+        try{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -38,12 +40,18 @@ class Main {
                 .create();
         ItemMidiaOmdb itemOmdb = gson.fromJson(json, ItemMidiaOmdb.class);
 
-        try{
+
             ItemMidia itemMidia = new ItemMidia(itemOmdb);
             System.out.println("Título Selecionado: " + itemMidia );
-        }catch(Exception e){
-            System.out.println("Erro ao salvar o novo item de mídia: " + e.getMessage());
+        }catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca, verifique o endereço");
+        } catch (ErroDeConversaoDeAnoException e) {
+            System.out.println(e.getMessage());
         }
 
+        System.out.println("O programa finalizou corretamente!");
     }
 }

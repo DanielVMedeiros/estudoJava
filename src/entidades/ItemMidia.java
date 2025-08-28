@@ -1,24 +1,27 @@
 package entidades;
 
 import com.google.gson.annotations.SerializedName;
+import exceptions.ErroDeConversaoDeAnoException;
 
 import java.util.Date;
 
 public class ItemMidia {
     private int identificador;
 
-    @SerializedName("Title")
     private String titulo;
 
-    @SerializedName("Genre")
     private String genero;
 
-    @SerializedName("Year")
     private int anoLancamento;
 
     private Double nota;
 
     public ItemMidia(ItemMidiaOmdb item) {
+        //nesse ponto item.year() é uma string
+        if(item.year().length() > 4){
+            throw new ErroDeConversaoDeAnoException("Não consegui converter o ano porque tem mais de 04 caracteres.");
+        }
+
         this.titulo = item.title();
         this.genero = item.genre();
         this.anoLancamento = Integer.parseInt(item.year());
