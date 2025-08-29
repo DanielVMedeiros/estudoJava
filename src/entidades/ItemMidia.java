@@ -61,10 +61,8 @@ public class ItemMidia {
 
     @Override
     public String toString() {
-        return "ItemMidia{" +
-                "titulo='" + titulo + '\'' +
-                ", genero='" + genero + '\'' +
-                ", anoLancamento=" + anoLancamento +
-                '}';
+        return "titulo= '" + titulo + '\'' +
+                ", genero= '" + genero + '\'' +
+                ", anoLancamento= " + anoLancamento;
     }
 }
