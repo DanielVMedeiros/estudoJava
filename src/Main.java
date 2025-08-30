@@ -5,6 +5,7 @@ import entidades.ItemMidia;
 import entidades.ItemMidiaOmdb;
 import entidades.Usuario;
 import exceptions.ErroDeConversaoDeAnoException;
+import metodosAdicionais.ConsultaAPI;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -27,42 +28,25 @@ class Main {
 
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
                 .create();
 
-        while(!filme.equals("sair")){
-
+        while(true){
 
             Scanner sc = new Scanner(System.in);
             System.out.println("Digite o nome do filme que deseja buscar: ");
             filme = sc.nextLine();
 
-            String url = "http://www.omdbapi.com/?t=" + filme.replace(" ", "+") + "&apikey=7c1014d2";
-
-            try{
-                HttpClient client = HttpClient.newHttpClient();
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(url))
-                        .GET()
-                        .build();
-
-                HttpResponse<String> response = client
-                        .send(request, HttpResponse.BodyHandlers.ofString());
-
-                String json = response.body();
-
-                ItemMidiaOmdb itemOmdb = gson.fromJson(json, ItemMidiaOmdb.class);
-
-                ItemMidia itemMidia = new ItemMidia(itemOmdb);
-                titulos.add(itemMidia);
-
-            }catch (NumberFormatException e) {
-                System.out.println("Aconteceu um erro: ");
-                System.out.println(e.getMessage());
-            } catch (IllegalArgumentException e) {
-                System.out.println("Algum erro de argumento na busca, verifique o endereço");
-            } catch (ErroDeConversaoDeAnoException e) {
-                System.out.println(e.getMessage());
+            if(filme.equalsIgnoreCase("sair")){
+                break;
             }
+
+            ConsultaAPI consultaAPI = new ConsultaAPI();
+
+            ItemMidia itemMidia = consultaAPI.consultaAPI(filme);
+
+            titulos.add(itemMidia);
+
 
         }
 
